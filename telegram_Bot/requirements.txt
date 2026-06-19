@@ -1,19 +1,16 @@
-aiofiles==25.1.0
-aiogram==3.29.0
-aiohappyeyeballs==2.6.2
-aiohttp==3.14.1
-aiosignal==1.4.0
-annotated-types==0.7.0
-attrs==26.1.0
-certifi==2026.5.20
-frozenlist==1.8.0
-idna==3.18
-magic-filter==1.0.12
-multidict==6.7.1
-propcache==0.5.2
-pydantic==2.13.4
-pydantic_core==2.46.4
-typing-inspection==0.4.2
-typing_extensions==4.15.0
-yarl==1.24.2
-yt-dlp==2026.6.9
+ydl_opts = {
+    'outtmpl': 'video.mp4',
+    'format': 'best[ext=mp4]/best',
+    'nocheckcertificate': True,
+    'ignoreerrors': False,
+    'logtostderr': False,
+    'quiet': True,
+    'no_warnings': True,
+    'default_search': 'auto',
+    'source_address': '0.0.0.0',
+    'http_headers': {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.9',
+    }
+}
