@@ -8,7 +8,7 @@ from yt_dlp import YoutubeDL
 
 logging.basicConfig(level=logging.INFO)
 
-# Настройки твоего бота и канала
+# Берем токен из настроек Environment, которые мы внесли на Render
 API_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_ID = -1004426248134  # ID твоего канала
 CHANNEL_URL = "https://t.me/savevideohub"  # Ссылка на твой канал
@@ -20,13 +20,11 @@ dp = Dispatcher()
 async def check_subscription(user_id: int) -> bool:
     try:
         member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=user_id)
-        # Если статус пользователя не "left" (вышел) и не "kicked" (забанен), значит он подписан
         if member.status in ["creator", "administrator", "member"]:
             return True
         return False
     except Exception as e:
         logging.error(f"Ошибка проверки подписки: {e}")
-        # Если произошла ошибка (например, бота убрали из админов), временно разрешаем скачивание
         return True
 
 @dp.message(CommandStart())
@@ -45,7 +43,6 @@ async def handle_message(message: types.Message):
     is_subscribed = await check_subscription(user_id)
 
     if not is_subscribed:
-        # Если не подписан, создаем красивую кнопку со ссылкой на канал
         keyboard = InlineKeyboardMarkup(inline_keyboard=[
             [InlineKeyboardButton(text="👉 ПОДПИСАТЬСЯ НА КАНАЛ", url=CHANNEL_URL)]
         ])
@@ -64,6 +61,18 @@ async def handle_message(message: types.Message):
             ydl_opts = {
                 'outtmpl': 'video.mp4',
                 'format': 'best[ext=mp4]/best',
+                'nocheckcertificate': True,
+                'ignoreerrors': False,
+                'logtostderr': False,
+                'quiet': True,
+                'no_warnings': True,
+                'default_search': 'auto',
+                'source_address': '0.0.0.0',
+                'http_headers': {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
+                    'Accept-Language': 'en-US,en;q=0.9',
+                }
             }
             with YoutubeDL(ydl_opts) as ydl:
                 ydl.download([url])
