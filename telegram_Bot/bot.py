@@ -9,7 +9,7 @@ from yt_dlp import YoutubeDL
 logging.basicConfig(level=logging.INFO)
 
 # Твой рабочий токен (я взял его с твоего скриншота)
-API_TOKEN = "8937298211:AAGRKMjPqXPFjmmqTEPOIOFIpoS_NNz8coM"
+API_TOKEN ="8937298211:AAGRKMjPqXPFjmmqTEPOIOFIpoS_NNz8coM"
 
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
