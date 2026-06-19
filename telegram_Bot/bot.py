@@ -9,7 +9,7 @@ from yt_dlp import YoutubeDL
 logging.basicConfig(level=logging.INFO)
 
 # Настройки твоего бота и канала
-API_TOKEN = "8937298211:AAGRKMjPqXPFjmmqTEPOIOFIpoS_NNz8coM"
+API_TOKEN ="8937298211:AAGRKMjPqXPfjmmqTEPOIOFIpoS_NNz8coM"
 CHANNEL_ID = -1004426248134  # ID твоего канала
 CHANNEL_URL = "https://t.me/savevideohub"  # Ссылка на твой канал
 
