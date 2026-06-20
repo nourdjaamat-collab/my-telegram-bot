@@ -9,7 +9,7 @@ from yt_dlp import YoutubeDL
 logging.basicConfig(level=logging.INFO)
 
 # Берем токен из настроек Environment, которые мы внесли на Render
-API_TOKEN = os.getenv("BOT_TOKEN")
+API_TOKEN = os.getenv("8937298211:AAEyQndwsWNAAUPPs2EgDf3TyfUzQ7pz69s")
 CHANNEL_ID = -1004426248134  # ID твоего канала
 CHANNEL_URL = "https://t.me/savevideohub"  # Ссылка на твой канал
 
