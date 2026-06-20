@@ -61,6 +61,7 @@ async def handle_message(message: types.Message):
             ydl_opts = {
                 'outtmpl': 'video.mp4',
                 'format': 'best[ext=mp4]/best',
+                'cookiefile': 'telegram_Bot/cookies.txt',  # <--- ВОТ ЭТА СТРОЧКА
                 'nocheckcertificate': True,
                 'ignoreerrors': False,
                 'logtostderr': False,
