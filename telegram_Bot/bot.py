@@ -9,7 +9,7 @@ from yt_dlp import YoutubeDL
 logging.basicConfig(level=logging.INFO)
 
 # Берем токен из настроек Environment, которые мы внесли на Render
-API_TOKEN = os.getenv("8937298211:AAEyQndwsWNAAUPPs2EgDf3TyfUzQ7pz69s")
+API_TOKEN = os.getenv("BOT_TOKEN")
 CHANNEL_ID = -1004426248134  # ID твоего канала
 CHANNEL_URL = "https://t.me/savevideohub"  # Ссылка на твой канал
 
@@ -59,9 +59,9 @@ async def handle_message(message: types.Message):
         await message.answer("🔄 Начинаю скачивание видео, подождите немного...")
         try:
             ydl_opts = {
-                'outtmpl': 'video.mp4',
+                'outtmpl': f'video_{user_id}.mp4',
                 'format': 'best[ext=mp4]/best',
-                'cookiefile': 'telegram_Bot/cookies.txt',  # <--- ВОТ ЭТА СТРОЧКА
+                'cookiefile': os.path.join(os.path.dirname(__file__), 'cookies.txt'),м
                 'nocheckcertificate': True,
                 'ignoreerrors': False,
                 'logtostderr': False,
