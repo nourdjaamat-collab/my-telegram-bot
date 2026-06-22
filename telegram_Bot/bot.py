@@ -61,7 +61,7 @@ async def handle_message(message: types.Message):
             ydl_opts = {
                 'outtmpl': f'video_{user_id}.mp4',
                 'format': 'best[ext=mp4]/best',
-                'cookiefile': os.path.join(os.path.dirname(__file__), 'cookies.txt'),м
+                'cookiefile': os.path.join(os.path.dirname(__file__), 'cookies.txt'),
                 'nocheckcertificate': True,
                 'ignoreerrors': False,
                 'logtostderr': False,
