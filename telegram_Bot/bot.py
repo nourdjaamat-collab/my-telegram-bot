@@ -16,7 +16,7 @@ CHANNEL_URL = "https://t.me/savevideohub"  # Ссылка на твой кана
 bot = Bot(token=API_TOKEN)
 dp = Dispatcher()
 
-# Функция для проверки, подписан ли пользователь на канал
+# Функция для проверки, подписан ли пользователь на канал 
 async def check_subscription(user_id: int) -> bool:
     try:
         member = await bot.get_chat_member(chat_id=CHANNEL_ID, user_id=user_id)
